@@ -50,8 +50,8 @@ class Noid(RoomIgnes):
     def helper(self,player,center):
         line()
         print("ノイド「よろしくね～」")
-        self.helper = NoidHelper()
-        player.addHelper(self.helper)
+        self.noid_helper = NoidHelper()
+        player.addHelper(self.noid_helper)
         self.isRoom = False
 
     def battle(self,player,center):
@@ -64,5 +64,5 @@ class Noid(RoomIgnes):
         line()
         print("ノイド「ばいば～い」")
         input("ノイドは部屋に戻った")
-        player.removeHelper(self.helper)
+        player.removeHelper(self.noid_helper)
         self.isRoom = True
