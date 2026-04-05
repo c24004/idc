@@ -52,6 +52,7 @@ class Noid(RoomIgnes):
         print("ノイド「よろしくね～」")
         self.helper = NoidHelper()
         player.addHelper(self.helper)
+        self.isRoom = False
 
     def battle(self,player,center):
         line()
