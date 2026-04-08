@@ -24,5 +24,5 @@ class Game:
                 ac[int(ans)][1](self.player)
         if not self.player.isAlive:
             line()
-            print("-----GAMA--OVER-----")
+            print("-----GAME--OVER-----")
             line()
