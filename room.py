@@ -1,3 +1,4 @@
+from common import line
 class Room:
     def __init__(self):
         self.name = "???"
@@ -7,8 +8,9 @@ class Room:
         self.name = ignes.name
         self.ignes = ignes
 
-    def enter(self,player,center):
+    def enter(self,player):
         if self.ignes:
-            self.ignes.com(player,center)
+            self.ignes.com(player)
         else:
-            print("空き部屋だ")
+            line()
+            input("空き部屋だ")

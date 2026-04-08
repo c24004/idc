@@ -21,12 +21,12 @@ class NoidEnemy(Enemy):
         input(f"{self.name}は立っている")
 
 class Noid(RoomIgnes):
-    def __init__(self):
+    def __init__(self,_):
         super().__init__("ノイド")
         self.isRoom = True
         self.noid_helper = None
 
-    def com(self,player,center):
+    def com(self,player):
         if self.isRoom:
             line()
             print("ノイド「やぁ」")
@@ -45,22 +45,22 @@ class Noid(RoomIgnes):
             line()
             input(f"{player.name}は部屋を出た")
         else:
-            ac[int(ans)][1](player,center)
+            ac[int(ans)][1](player)
 
-    def helper(self,player,center):
+    def helper(self,player):
         line()
         print("ノイド「よろしくね～」")
         self.noid_helper = NoidHelper()
         player.addHelper(self.noid_helper)
         self.isRoom = False
 
-    def battle(self,player,center):
+    def battle(self,player):
         line()
         print("ノイド「えぇー！なんでー！？」")
         battle = Battle(player,NoidEnemy())
         battle.start()
 
-    def roomBack(self,player,center):
+    def roomBack(self,player):
         line()
         print("ノイド「ばいば～い」")
         input("ノイドは部屋に戻った")

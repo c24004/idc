@@ -12,9 +12,9 @@ class RoomManager:
         self.room_list = [[Room() for _ in range(5)] for _ in range(2)]
 
     def addIgnes(self,name):
-        ignes = self.paper.addIgnes(name)
+        ignes = self.paper.addIgnes(name,self.center)
         self.room_list[ignes["num"][0]][ignes["num"][1]].addIgnes(ignes["class"])
-        if ignes["check"]:
+        if ignes["event"]:
             self.event.addIgnes(ignes["class"])
 
     def search(self,player):
@@ -38,6 +38,7 @@ class RoomManager:
             elif ans == "b":
                 page = (page - 1) % len(self.room_list)
             else:
-                self.room_list[page][int(ans) - 1].enter(player,self.center)
-                self.event.action(player,self.center)
+                self.room_list[page][int(ans) - 1].enter(player)
+                if player.isAlive:
+                    self.event.action(player)
 

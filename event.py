@@ -9,11 +9,11 @@ class Event:
         if ignes not in self.ignesList:
             self.ignesList.append(ignes)
 
-    def action(self,player,center):
+    def action(self,player):
         if self.ignesList and prob(30):
             line()
             print("---イベント発生---")
             line()
             input("(確認)")
             ignse = random.choice(self.ignesList)
-            ignse.action(player,center)
+            ignse.action(player)

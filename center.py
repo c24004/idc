@@ -16,5 +16,5 @@ class Center:
     def setFlag(self, key,isTrigger = True):
         self.flags[key] = isTrigger
 
-    def checkFlag(self, key):
+    def getFlag(self, key):
         return self.flags.get(key, False)

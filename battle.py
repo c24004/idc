@@ -24,6 +24,6 @@ class Battle:
             turn = 1 - turn
         line()
         if self.player.isAlive:
-            input("勝利！")
+            input(f"{self.enemy.name}を倒した！")
         else:
-            input("敗北……")
+            input(f"{self.player.name}は倒れてしまった……")

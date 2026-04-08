@@ -1,5 +1,5 @@
 from effect import Effect
-from common import line
+from common import line,prob
 import random
 
 class BattleChara:
@@ -28,10 +28,17 @@ class BattleChara:
     def removeEffect(self,effect):
         self.effect.remove(effect)
 
+    def heal(self,num):
+        self.hp = min(self.maxHp,self.hp + num)
+        input(f"{self.name}は{num}回復！")
+
     def damage(self,dmg):
+        if any(e.type == "avoid" for e in self.effect) and prob(50):
+            input(f"しかし、{self.name}は回避した！")
+            return
         d = max(1,dmg // 2 - self.df // 4 + random.randint(0,3))
         if any(e.type == "defense" for e in self.effect):
-            d //= 2
+            d = max(1,d // 2)
         self.hit(d)
 
     def hit(self,damage):

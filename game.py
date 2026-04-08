@@ -1,5 +1,5 @@
 from player import Player
-from wishBox import WishBox
+from wish_box import WishBox
 from common import line,select
 
 class Game:
@@ -9,7 +9,7 @@ class Game:
 
     def start(self):
         ac = {1:("開発",self.wishBox.development),2:("確認",self.player.open_status)}
-        while True:
+        while self.player.isAlive:
             line()
             print("どうする？")
             line()
@@ -22,3 +22,7 @@ class Game:
                 break
             else:
                 ac[int(ans)][1](self.player)
+        if not self.player.isAlive:
+            line()
+            print("-----GAMA--OVER-----")
+            line()

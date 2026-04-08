@@ -24,10 +24,10 @@ class Player(BattleChara):
         self.show_status_base()
         if self.item:
             name_list = [i.name for i in self.item]
-            print(f"{name_list}")
+            print(f"道具:{name_list}")
         if self.helper:
             name_list = [h.name for h in self.helper]
-            print(f"{name_list}")
+            print(f"味方:{name_list}")
         line()
         input("(確認)")
 
@@ -38,12 +38,18 @@ class Player(BattleChara):
     def removeItem(self,item):
         self.item.remove(item)
 
+    def isItem(self,item):
+        return any(isinstance(i,item) for i in self.item)
+
     def addHelper(self,helper):
         input(f"{helper.name}が仲間になった！")
         self.helper.append(helper)
 
     def removeHelper(self,helper):
         self.helper.remove(helper)
+
+    def isHelper(self,helper):
+        return any(isinstance(h,helper) for h in self.helper)
 
     def attack(self,enemy):
         line()
@@ -54,7 +60,7 @@ class Player(BattleChara):
     def defense(self,enemy):
         line()
         input(f"{self.name}は盾で防御！")
-        self.addEffect(self,"防御","defense")
+        self.addEffect("防御","defense")
         return True
 
     def observer(self,enemy):
@@ -95,7 +101,7 @@ class Player(BattleChara):
             print(f"{i}:{h.name}")
         print("0:戻る")
         line()
-        ans = select(len(self.item),["0"])
+        ans = select(len(self.helper),["0"])
         if ans == "0":
             pass
         else:
